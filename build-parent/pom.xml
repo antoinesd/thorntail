@@ -37,11 +37,11 @@
     <version.orientdb.config-api>1.3.0</version.orientdb.config-api>
     <version.wildfly.nosql.feature-pack>1.0.0.Beta1</version.wildfly.nosql.feature-pack>
 
-    <version.wildfly>11.0.0.Final</version.wildfly>
-    <version.org.wildfly.core>3.0.8.Final</version.org.wildfly.core>
+    <version.wildfly>7.1.0.GA-redhat-11</version.wildfly>
+    <version.org.wildfly.core>3.0.10.Final-redhat-1</version.org.wildfly.core>
     <version.jboss-logmanager-ext>1.0.0.Alpha3</version.jboss-logmanager-ext>
     <!-- Weld SE version must be aligned with the version used in WildFly -->
-    <version.weld-se>2.4.3.Final</version.weld-se>
+    <version.weld-se>2.4.3.Final-redhat-1</version.weld-se>
     <!-- Align dependency versions with those present in WildFly parent -->
     <!-- Doing this explicitly since there is no easy way to import project properties from a pom file -->
     <version.com.fasterxml.jackson>2.8.9</version.com.fasterxml.jackson>
@@ -153,8 +153,8 @@
       </dependency>
 
       <dependency>
-        <groupId>org.wildfly</groupId>
-        <artifactId>wildfly-parent</artifactId>
+        <groupId>org.jboss.eap</groupId>
+        <artifactId>jboss-eap-parent</artifactId>
         <version>${version.wildfly}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -369,7 +369,7 @@
       </dependency>
 
       <dependency>
-        <groupId>org.wildfly</groupId>
+        <groupId>org.jboss.eap</groupId>
         <artifactId>wildfly-microprofile-config-implementation</artifactId>
         <version>${version.wildfly-microprofile-config}</version>
       </dependency>
@@ -438,14 +438,14 @@
 
       <!-- Feature Packs -->
       <dependency>
-        <groupId>org.wildfly</groupId>
+        <groupId>org.jboss.eap</groupId>
         <artifactId>wildfly-servlet-feature-pack</artifactId>
         <version>${version.wildfly}</version>
         <type>zip</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
-        <groupId>org.wildfly</groupId>
+        <groupId>org.jboss.eap</groupId>
         <artifactId>wildfly-feature-pack</artifactId>
         <version>${version.wildfly}</version>
         <type>zip</type>

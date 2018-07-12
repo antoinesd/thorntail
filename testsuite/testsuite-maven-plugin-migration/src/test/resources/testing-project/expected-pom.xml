@@ -54,7 +54,7 @@
           <artifactId>cdi-config</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>org.wildfly</groupId>
+          <groupId>org.jboss.eap</groupId>
           <artifactId>wildfly-weld</artifactId>
         </exclusion>
       </exclusions>

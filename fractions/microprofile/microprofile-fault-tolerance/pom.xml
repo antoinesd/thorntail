@@ -111,7 +111,7 @@
       <scope>test</scope>
    </dependency>
    <dependency>
-      <groupId>org.wildfly</groupId>
+      <groupId>org.jboss.eap</groupId>
       <artifactId>wildfly-weld</artifactId>
       <scope>test</scope>
    </dependency>

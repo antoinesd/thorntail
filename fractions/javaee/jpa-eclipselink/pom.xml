@@ -40,7 +40,7 @@
     </dependency>
 
     <dependency>
-      <groupId>org.wildfly</groupId>
+      <groupId>org.jboss.eap</groupId>
       <artifactId>jipijapa-eclipselink</artifactId>
     </dependency>
 
