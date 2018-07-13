@@ -369,7 +369,7 @@
       </dependency>
 
       <dependency>
-        <groupId>org.jboss.eap</groupId>
+        <groupId>org.wildfly</groupId>
         <artifactId>wildfly-microprofile-config-implementation</artifactId>
         <version>${version.wildfly-microprofile-config}</version>
       </dependency>
