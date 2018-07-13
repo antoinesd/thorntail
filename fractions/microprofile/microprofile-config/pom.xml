@@ -75,6 +75,12 @@
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>microprofile-config-api</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.wildfly.swarm</groupId>
+                    <artifactId>config-api-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.wildfly</groupId>
