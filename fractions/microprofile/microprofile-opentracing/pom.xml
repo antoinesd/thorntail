@@ -15,7 +15,7 @@
   <description>OpenTracing integration for Microprofile</description>
 
   <properties>
-    <swarm.fraction.stability>experimental</swarm.fraction.stability>
+    <swarm.fraction.stability>stable</swarm.fraction.stability>
     <swarm.fraction.tags>Microprofile, OpenTracing, Monitoring</swarm.fraction.tags>
   </properties>
 
@@ -57,6 +57,7 @@
       <artifactId>opentracing-tracerresolver</artifactId>
     </dependency>
 
+
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-client</artifactId>
@@ -69,6 +70,12 @@
       <artifactId>microprofile-opentracing-api</artifactId>
       <version>${version.microprofile-opentracing}</version>
     </dependency>
+    <dependency>
+      <groupId>io.smallrye</groupId>
+      <artifactId>smallrye-opentracing</artifactId>
+      <version>${version.smallrye.opentracing}</version>
+    </dependency>
+
     <dependency>
       <groupId>io.opentracing.contrib</groupId>
       <artifactId>opentracing-web-servlet-filter</artifactId>
