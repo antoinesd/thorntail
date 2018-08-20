@@ -125,7 +125,53 @@
     <dependency>
       <groupId>io.undertow</groupId>
       <artifactId>undertow-servlet</artifactId>
+<!--
+      <exclusions>
+        <exclusion>
+          <groupId>org.jboss.xnio</groupId>
+          <artifactId>xnio-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss.xnio</groupId>
+          <artifactId>xnio-nio</artifactId>
+        </exclusion>
+      </exclusions>
+-->
     </dependency>
+
+    <!-- start 2.2.0.Final managed -->
+    <!--
+    <dependency>
+      <groupId>org.jboss.xnio</groupId>
+      <artifactId>xnio-api</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.wildfly.client</groupId>
+          <artifactId>wildfly-client-config</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.wildfly.common</groupId>
+          <artifactId>wildfly-common</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.wildfly.client</groupId>
+      <artifactId>wildfly-client-config</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.wildfly.common</groupId>
+      <artifactId>wildfly-common</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.xnio</groupId>
+      <artifactId>xnio-nio</artifactId>
+    </dependency>
+    -->
+    <!-- end 2.2.0.Final managed -->
 
     <!-- Meta SPI -->
     <dependency>
