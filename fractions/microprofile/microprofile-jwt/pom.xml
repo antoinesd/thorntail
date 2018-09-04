@@ -85,6 +85,7 @@
     <dependency>
       <groupId>org.eclipse.microprofile.jwt</groupId>
       <artifactId>microprofile-jwt-auth-api</artifactId>
+      <version>${version.microprofile-jwt-auth}</version>
       <exclusions>
         <exclusion>
           <groupId>org.osgi</groupId>

@@ -84,16 +84,6 @@
     <version.zipkin.reporter>0.6.1</version.zipkin.reporter>
     <version.zipkin>1.13.1</version.zipkin>
 
-    <version.commons-codec>1.10</version.commons-codec>
-    <version.apache-mime4j>0.6</version.apache-mime4j>
-    <version.httpcore>4.4.4</version.httpcore>
-    <version.httpclient>4.5.2</version.httpclient>
-    <version.commons-logging>1.2</version.commons-logging>
-    <version.commons-io>2.5</version.commons-io>
-    <version.classmate>1.3.3</version.classmate>
-    <version.openjdk-orb>8.0.8.Final</version.openjdk-orb>
-    <version.jcip-annotations>1.0</version.jcip-annotations>
-    
     <!-- OpenTracing related versions -->
     <version.opentracing.tracerresolver>0.1.4</version.opentracing.tracerresolver>
     <version.opentracing.servlet>0.1.0</version.opentracing.servlet>
@@ -110,7 +100,7 @@
     <version.maven.aether>3.2.5</version.maven.aether>
 
     <version.resteasy>3.0.24.Final</version.resteasy>
-    <version.org.glassfish.javax.json>1.0.4</version.org.glassfish.javax.json>
+    <version.org.glassfish.javax.json>1.1.2</version.org.glassfish.javax.json>
 
     <!-- MicroProfile APIs -->
     <!-- NOTE: we cannot use MP BOM as it does not define dependencyManagement -->
@@ -119,7 +109,7 @@
     <version.microprofile-fault-tolerance>1.0</version.microprofile-fault-tolerance>
     <version.microprofile-jwt-auth>1.1</version.microprofile-jwt-auth>
     <version.microprofile-metrics>1.1</version.microprofile-metrics>
-    <version.microprofile.restclient>1.0</version.microprofile.restclient>
+    <version.microprofile.restclient>1.0.1</version.microprofile.restclient>
     <version.microprofile-openapi>1.0.1</version.microprofile-openapi>
     <version.microprofile-opentracing>1.1</version.microprofile-opentracing>
     <!-- MP Config implementation -->
@@ -133,14 +123,22 @@
     <version.smallrye-fault-tolerance>1.0.1</version.smallrye-fault-tolerance>
 
     <!-- managed for 2.2.0.Final prod -->
-<!--
-    <version.xnio>3.5.4.Final-redhat-1</version.xnio>
-    <version.javax.activation>1.1.1.redhat-5</version.javax.activation>
-    <wildfly-client-config.version>1.0.0.Final-redhat-1</wildfly-client-config.version>
-    <wildfly-common.version>1.2.0.Final-redhat-1</wildfly-common.version>
-    <version.com.fasterxml.jackson>2.8.11.redhat-1</version.com.fasterxml.jackson>
-    <version.org.slf4j>1.7.22.redhat-1</version.org.slf4j>
--->
+    <version.smallrye>1.3.3</version.smallrye>
+    <commons-codec.version>1.10</commons-codec.version>
+    <apache-mime4j.version>0.6</apache-mime4j.version>
+    <httpcore.version>4.4.4</httpcore.version>
+    <httpclient.version>4.5.2</httpclient.version>
+    <commons-logging.version>1.2</commons-logging.version>
+    <commons-io.version>2.5</commons-io.version>
+    <classmate.version>1.3.3</classmate.version>
+    <openjdk-orb.version>8.0.8.Final</openjdk-orb.version>
+    <jcip-annotations.version>1.0</jcip-annotations.version>
+    <version.xnio>3.5.4.Final</version.xnio>
+    <version.javax.activation>1.1.1</version.javax.activation>
+    <wildfly-client-config.version>1.0.0.Final</wildfly-client-config.version>
+    <wildfly-common.version>1.2.0.Final</wildfly-common.version>
+    <version.org.slf4j>1.7.22</version.org.slf4j>
+    
   </properties>
 
   <build>
@@ -389,13 +387,7 @@
         <version>${version.openshift.client}</version>
       </dependency>
 
-      <!-- MicroProfile 1.2 -->
-      <dependency>
-        <groupId>org.eclipse.microprofile.config</groupId>
-        <artifactId>microprofile-config-api</artifactId>
-        <version>${version.microprofile-config}</version>
-      </dependency>
-
+      <!-- SmallRye -->
       <dependency>
         <groupId>io.smallrye</groupId>
         <artifactId>smallrye-config</artifactId>
@@ -408,31 +400,6 @@
         <version>${version.wildfly-microprofile-config}</version>
       </dependency>
 
-      <dependency>
-        <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
-        <artifactId>microprofile-fault-tolerance-api</artifactId>
-        <version>${version.microprofile-fault-tolerance}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.eclipse.microprofile.health</groupId>
-        <artifactId>microprofile-health-api</artifactId>
-        <version>${version.microprofile-health}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.eclipse.microprofile.metrics</groupId>
-        <artifactId>microprofile-metrics-api</artifactId>
-        <version>${version.microprofile-metrics}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.eclipse.microprofile.jwt</groupId>
-        <artifactId>microprofile-jwt-auth-api</artifactId>
-        <version>${version.microprofile-jwt-auth}</version>
-      </dependency>
-
-      <!-- SmallRye -->
       <dependency>
         <groupId>io.smallrye</groupId>
         <artifactId>smallrye-health</artifactId>
@@ -479,57 +446,101 @@
         <artifactId>okio</artifactId>
         <version>${version.com.squareup.okio}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.jboss.xnio</groupId>
+        <artifactId>xnio-nio</artifactId>
+        <version>${version.xnio}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.wildfly.client</groupId>
+        <artifactId>wildfly-client-config</artifactId>
+        <version>${wildfly-client-config.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.wildfly.common</groupId>
+        <artifactId>wildfly-common</artifactId>
+        <version>${wildfly-common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>${version.javax.activation}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${version.org.slf4j}</version>
+      </dependency>
       <dependency>
           <groupId>org.apache.thrift</groupId>
           <artifactId>libthrift</artifactId>
           <version>${version.jaeger.apache.thrift}</version>
       </dependency>
       <dependency>
+        <groupId>io.smallrye</groupId>
+        <artifactId>smallrye-config</artifactId>
+        <version>${version.smallrye}</version>
+      </dependency>
+      <dependency>
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
-        <version>${version.commons-codec}</version>
+        <version>${commons-codec.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpcore</artifactId>
-        <version>${version.httpcore}</version>
+        <version>${httpcore.version}</version>
       </dependency>
-      <dependency>
+      <dependency> 
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
-        <version>${version.httpclient}</version>
+        <version>${httpclient.version}</version>
+        <exclusions> <!--DR2: rhoar-thorntail-2.2.0.GA-maven-repository -->
+          <exclusion>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
-        <version>${version.commons-logging}</version>
+        <version>${commons-logging.version}</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
-        <version>${version.commons-io}</version>
+        <version>${commons-io.version}</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml</groupId>
         <artifactId>classmate</artifactId>
-        <version>${version.classmate}</version>
+        <version>${classmate.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jboss.openjdk-orb</groupId>
         <artifactId>openjdk-orb</artifactId>
-        <version>${version.openjdk-orb}</version>
+        <version>${openjdk-orb.version}</version>
       </dependency>
       <dependency>
         <groupId>net.jcip</groupId>
         <artifactId>jcip-annotations</artifactId>
-        <version>${version.jcip-annotations}</version>
+        <version>${jcip-annotations.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
         <version>${version.jaeger.gson}</version>
       </dependency>
-      
+      <dependency>
+        <groupId>org.apache.james</groupId>
+        <artifactId>apache-mime4j</artifactId>
+        <version>${apache-mime4j.version}</version>
+      </dependency>
+
       <!-- end of unused dependencies -->
 
       <!-- Feature Packs -->
@@ -560,56 +571,6 @@
         <type>zip</type>
         <scope>provided</scope>
       </dependency>
-
-      <!-- start of 2.2.0.Final prod alignment -->
-      <!--
-      <dependency>
-        <groupId>org.jboss.xnio</groupId>
-        <artifactId>xnio-nio</artifactId>
-        <version>${version.xnio}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.wildfly.client</groupId>
-        <artifactId>wildfly-client-config</artifactId>
-        <version>${wildfly-client-config.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.wildfly.common</groupId>
-        <artifactId>wildfly-common</artifactId>
-        <version>${wildfly-common.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>javax.activation</groupId>
-        <artifactId>activation</artifactId>
-        <version>${version.javax.activation}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-        <version>${version.com.fasterxml.jackson}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>${version.com.fasterxml.jackson}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-annotations</artifactId>
-        <version>${version.com.fasterxml.jackson}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>${version.org.slf4j}</version>
-      </dependency>
-      -->
-      <!-- end of 2.2.0.Final prod alignment -->
     </dependencies>
   </dependencyManagement>
 

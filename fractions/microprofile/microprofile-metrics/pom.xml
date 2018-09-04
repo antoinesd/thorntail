@@ -91,6 +91,7 @@
     <dependency>
       <groupId>org.eclipse.microprofile.metrics</groupId>
       <artifactId>microprofile-metrics-api</artifactId>
+      <version>${version.microprofile-metrics}</version>
       <exclusions>
         <exclusion>
           <groupId>org.osgi</groupId>

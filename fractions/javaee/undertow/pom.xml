@@ -125,7 +125,6 @@
     <dependency>
       <groupId>io.undertow</groupId>
       <artifactId>undertow-servlet</artifactId>
-<!--
       <exclusions>
         <exclusion>
           <groupId>org.jboss.xnio</groupId>
@@ -136,11 +135,9 @@
           <artifactId>xnio-nio</artifactId>
         </exclusion>
       </exclusions>
--->
     </dependency>
 
     <!-- start 2.2.0.Final managed -->
-    <!--
     <dependency>
       <groupId>org.jboss.xnio</groupId>
       <artifactId>xnio-api</artifactId>
@@ -170,7 +167,6 @@
       <groupId>org.jboss.xnio</groupId>
       <artifactId>xnio-nio</artifactId>
     </dependency>
-    -->
     <!-- end 2.2.0.Final managed -->
 
     <!-- Meta SPI -->
