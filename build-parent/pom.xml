@@ -129,7 +129,13 @@
     <wildfly-client-config.version>1.0.0.Final</wildfly-client-config.version>
     <wildfly-common.version>1.2.0.Final</wildfly-common.version>
     <version.org.slf4j>1.7.22</version.org.slf4j>
-    
+    <commons-codec.version>1.10</commons-codec.version>
+    <apache-mime4j.version>0.6</apache-mime4j.version>
+    <httpcore.version>4.4.4</httpcore.version>
+    <httpclient.version>4.5.2</httpclient.version>
+    <commons-logging.version>1.1.1</commons-logging.version>
+    <commons-io.version>2.5</commons-io.version>
+    <jcip-annotations.version>1.0</jcip-annotations.version>
   </properties>
 
   <build>
@@ -546,12 +552,6 @@
           <groupId>org.apache.thrift</groupId>
           <artifactId>libthrift</artifactId>
           <version>${version.jaeger.apache.thrift}</version>
-          <exclusions>
-            <exclusion>
-              <groupId>commons-codec</groupId>
-              <artifactId>commons-codec</artifactId>
-            </exclusion>
-          </exclusions>
       </dependency>
       <dependency>
         <groupId>com.google.code.gson</groupId>
@@ -562,6 +562,48 @@
         <groupId>com.fasterxml.jackson.dataformat</groupId>
         <artifactId>jackson-dataformat-yaml</artifactId>
         <version>${version.com.fasterxml.jackson.dataformat}</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>${commons-codec.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.james</groupId>
+        <artifactId>apache-mime4j</artifactId>
+        <version>${apache-mime4j.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore</artifactId>
+        <version>${httpcore.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>${commons-logging.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>net.jcip</groupId>
+        <artifactId>jcip-annotations</artifactId>
+        <version>${jcip-annotations.version}</version>
       </dependency>
       <!-- end of unused dependencies -->
 
