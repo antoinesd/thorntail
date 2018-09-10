@@ -124,7 +124,6 @@
     <version.smallrye.open-api>1.0.1</version.smallrye.open-api>
 
     <!-- managed for 2.2.0.Final prod -->
-    <version.com.fasterxml.jackson.dataformat>2.9.5</version.com.fasterxml.jackson.dataformat>
     <version.xnio>3.5.4.Final</version.xnio>
     <wildfly-client-config.version>1.0.0.Final</wildfly-client-config.version>
     <wildfly-common.version>1.2.0.Final</wildfly-common.version>
@@ -502,10 +501,6 @@
               <groupId>org.osgi</groupId>
               <artifactId>org.osgi.annotation.versioning</artifactId>
           </exclusion>
-          <exclusion>
-              <groupId>com.fasterxml.jackson.dataformat</groupId>
-              <artifactId>jackson-dataformat-yaml</artifactId>
-          </exclusion>
         </exclusions>
       </dependency>
       
@@ -558,12 +553,6 @@
         <artifactId>gson</artifactId>
         <version>${version.jaeger.gson}</version>
       </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.dataformat</groupId>
-        <artifactId>jackson-dataformat-yaml</artifactId>
-        <version>${version.com.fasterxml.jackson.dataformat}</version>
-      </dependency>
-      
       <dependency>
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
