@@ -38,11 +38,11 @@
     <version.wildfly.nosql.feature-pack>1.0.0.Final</version.wildfly.nosql.feature-pack>
 
     <version.jboss-modules>1.6.4.Final</version.jboss-modules>
-    <version.wildfly>7.1.1.GA-redhat-2</version.wildfly>
-    <version.org.wildfly.core>3.0.12.Final-redhat-1</version.org.wildfly.core>
+    <version.wildfly>7.1.4.GA-redhat-1</version.wildfly>
+    <version.org.wildfly.core>3.0.17.Final-redhat-1</version.org.wildfly.core>
     <version.jboss-logmanager-ext>1.0.0.Alpha3</version.jboss-logmanager-ext>
     <!-- Weld SE version must be aligned with the version used in WildFly -->
-    <version.weld-se>2.4.3.Final-redhat-1</version.weld-se>
+    <version.weld-se>2.4.7.Final-redhat-1</version.weld-se>
     <version.jandex>2.0.5.Final</version.jandex>
     <!-- Align dependency versions with those present in WildFly parent -->
     <!-- Doing this explicitly since there is no easy way to import project properties from a pom file -->
