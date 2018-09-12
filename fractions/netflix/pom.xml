@@ -105,6 +105,12 @@
       </dependency>
 
       <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${version.guava}</version>
+      </dependency>
+
+      <dependency>
         <groupId>com.netflix.hystrix</groupId>
         <artifactId>hystrix-core</artifactId>
         <version>${version.hystrix}</version>
@@ -113,12 +119,6 @@
         <groupId>com.netflix.hystrix</groupId>
         <artifactId>hystrix-serialization</artifactId>
         <version>${version.hystrix}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-afterburner</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
       <dependency>
         <groupId>com.netflix.hystrix</groupId>
