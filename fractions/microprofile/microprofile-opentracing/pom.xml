@@ -79,6 +79,16 @@
       <groupId>io.opentracing.contrib</groupId>
       <artifactId>opentracing-web-servlet-filter</artifactId>
       <version>${version.opentracing.servlet}</version>
+      <exclusions>
+         <exclusion>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-concurrent</artifactId>
+         </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.opentracing.contrib</groupId>
+      <artifactId>opentracing-concurrent</artifactId>
     </dependency>
     <dependency>
       <groupId>io.opentracing.contrib</groupId>
