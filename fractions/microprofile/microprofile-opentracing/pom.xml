@@ -79,6 +79,12 @@
       <groupId>io.opentracing.contrib</groupId>
       <artifactId>opentracing-jaxrs2</artifactId>
       <version>${version.opentracing.jaxrs}</version>
+      <exclusions>
+           <exclusion>
+              <groupId>org.eclipse.microprofile.opentracing</groupId>
+              <artifactId>microprofile-opentracing-api</artifactId>
+           </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
