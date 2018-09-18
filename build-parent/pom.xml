@@ -46,7 +46,7 @@
     <version.jandex>2.0.5.Final</version.jandex>
     <!-- Align dependency versions with those present in WildFly parent -->
     <!-- Doing this explicitly since there is no easy way to import project properties from a pom file -->
-    <version.com.fasterxml.jackson>2.8.9</version.com.fasterxml.jackson>
+    <version.com.fasterxml.jackson>2.8.11</version.com.fasterxml.jackson>
 
     <version.org.objectweb.asm>6.0</version.org.objectweb.asm>
 
@@ -125,7 +125,7 @@
     <version.smallrye.open-api>1.0.1</version.smallrye.open-api>
 
     <!-- managed for 2.2.0.Final prod -->
-    <version.xnio>3.5.4.Final</version.xnio>
+    <version.xnio>3.5.5.Final</version.xnio>
     <wildfly-client-config.version>1.0.0.Final</wildfly-client-config.version>
     <wildfly-common.version>1.2.0.Final</wildfly-common.version>
     <version.org.slf4j>1.7.22</version.org.slf4j>
@@ -549,6 +549,12 @@
         <groupId>org.jboss.xnio</groupId>
         <artifactId>xnio-nio</artifactId>
         <version>${version.xnio}</version>
+      </dependency>
+
+      <dependency>
+       <groupId>org.jboss.xnio</groupId>
+       <artifactId>xnio-api</artifactId>
+       <version>${version.xnio}</version>
       </dependency>
 
       <dependency>
