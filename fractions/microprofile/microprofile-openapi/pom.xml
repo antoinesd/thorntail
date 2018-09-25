@@ -24,7 +24,7 @@
   <properties>
     <swarm.fraction.stability>stable</swarm.fraction.stability>
     <swarm.fraction.tags>MicroProfile,OpenAPI,JaxRs,Web</swarm.fraction.tags>
-    <version.com.fasterxml.jackson.dataformat>2.9.2</version.com.fasterxml.jackson.dataformat>
+    <version.com.fasterxml.jackson.dataformat>2.9.5</version.com.fasterxml.jackson.dataformat>
   </properties>
 
   <build>
@@ -65,6 +65,13 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-open-api</artifactId>
+    </dependency>
+
+    <!-- force dependency alignment -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+      <version>${version.com.fasterxml.jackson.dataformat}</version>
     </dependency>
 
     <!-- Provided APIs -->
