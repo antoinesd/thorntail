@@ -3,7 +3,7 @@ require 'open-uri'
 
 versions = []
 
-open('https://raw.githubusercontent.com/wildfly-swarm/docs.wildfly-swarm.io/master/versions.txt') do |io|
+open('https://raw.githubusercontent.com/thorntail/docs.thorntail.io/master/versions.txt') do |io|
   versions = io.readlines
 end
 
