@@ -34,6 +34,7 @@ import static org.junit.Assert.assertTrue;
 public class ConfigViewFactoryTest {
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testJohnsYaml() {
         InputStream in = getClass().getResourceAsStream("/john.yml");
         Map<String, ?> doc = ConfigViewFactory.loadYaml(in);
@@ -43,10 +44,11 @@ public class ConfigViewFactoryTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testLucasesYaml() {
         InputStream in = getClass().getResourceAsStream("/lucas.yml");
         Map<String, ?> doc = ConfigViewFactory.loadYaml(in);
-        Map<String, ?> swarm = (Map<String, ?>) doc.get("swarm");
+        Map<String, ?> swarm = (Map<String, ?>) doc.get("thorntail");
         Map<String, ?> security = (Map<String, ?>) swarm.get("security");
         Map<String, ?> securityDomains = (Map<String, ?>) security.get("security-domains");
         Map<String, ?> jaspioauth = (Map<String, ?>) securityDomains.get("jaspioauth");
@@ -60,6 +62,7 @@ public class ConfigViewFactoryTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testYamlWithEnvProperties() {
         InputStream in = getClass().getResourceAsStream("/withenvvalues.yml");
         Map<String, String> environment = new HashMap<>();

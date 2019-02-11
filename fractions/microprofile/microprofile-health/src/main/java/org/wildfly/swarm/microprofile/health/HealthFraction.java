@@ -31,15 +31,14 @@ import org.wildfly.swarm.spi.api.annotations.DeploymentModule;
  */
 @DeploymentModule(name = "javax.ws.rs.api")
 @DeploymentModule(name = "org.jboss.dmr")
-@DeploymentModule(name = "org.wildfly.swarm.microprofile.health")
 @DeploymentModule(name = "org.wildfly.swarm.microprofile.health", slot = "deployment",
                   export = true, metaInf = DeploymentModule.MetaInfDisposition.IMPORT)
 @DeploymentModule(name = "org.eclipse.microprofile.health", services = Module.ServiceHandling.IMPORT, export = true)
 public class HealthFraction implements Fraction<HealthFraction> {
 
     @AttributeDocumentation("Security realm configuration")
-    @Configurable("swarm.microprofile.health.security-realm")
-    @Configurable("swarm.health.security-realm")
+    @Configurable("thorntail.microprofile.health.security-realm")
+    @Configurable("thorntail.health.security-realm")
     private Defaultable<String> securityRealm = string("");
 
     public HealthFraction securityRealm(String realmName) {

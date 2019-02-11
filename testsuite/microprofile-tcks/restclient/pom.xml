@@ -26,7 +26,7 @@
    <parent>
       <groupId>io.thorntail.testsuite</groupId>
       <artifactId>thorntail-microprofile-tck-parent</artifactId>
-      <version>2.2.0.Final</version>
+      <version>2.3.0.Final</version>
       <relativePath>../</relativePath>
    </parent>
 
@@ -97,13 +97,6 @@
       </dependency>
 
       <dependency>
-         <groupId>com.github.tomakehurst</groupId>
-         <artifactId>wiremock</artifactId>
-         <version>2.10.1</version>
-         <scope>test</scope>
-      </dependency>
-
-      <dependency>
          <groupId>javax.json</groupId>
          <artifactId>javax.json-api</artifactId>
          <version>1.0</version>
@@ -128,7 +121,7 @@
       <dependency>
          <groupId>com.github.tomakehurst</groupId>
          <artifactId>wiremock</artifactId>
-         <version>2.7.0</version>
+         <version>2.10.1</version>
          <scope>test</scope>
          <exclusions>
             <exclusion>
@@ -143,9 +136,9 @@
    <build>
       <plugins>
          <plugin>
-            <groupId>uk.co.deliverymind</groupId>
+            <groupId>uk.co.automatictester</groupId>
             <artifactId>wiremock-maven-plugin</artifactId>
-            <version>2.7.0</version>
+            <version>4.1.0</version>
             <executions>
                <execution>
                   <phase>generate-test-sources</phase>
@@ -173,31 +166,12 @@
                </dependenciesToScan>
 
                <excludes>
-
-                  <!-- [hb] Challenged, see  https://github.com/eclipse/microprofile-rest-client/pull/69 -->
-                  <exclude>org.eclipse.microprofile.rest.client.tck.InvokeWithJsonPProviderTest</exclude>
-
+                  <!-- see: https://github.com/eclipse/microprofile-rest-client/issues/133 -->
+                  <!-- the test method that is failing is testAsyncInvocationInterceptorProvider -->
+                  <exclude>org.eclipse.microprofile.rest.client.tck.asynctests.AsyncMethodTest</exclude>
                </excludes>
             </configuration>
          </plugin>
-
-         <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-enforcer-plugin</artifactId>
-            <dependencies>
-               <dependency>
-              <groupId>io.thorntail</groupId>
-              <artifactId>thorntail-enforcer-pattern-size</artifactId>
-              <version>${project.version}</version>
-            </dependency>
-          </dependencies>
-          <executions>
-            <execution>
-              <id>enforce</id>
-              <phase>none</phase>
-            </execution>
-           </executions>
-        </plugin>
 
       </plugins>
    </build>

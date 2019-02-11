@@ -10,7 +10,7 @@
   <parent>
     <groupId>io.thorntail.testsuite</groupId>
     <artifactId>testsuite-parent</artifactId>
-    <version>2.2.0.Final</version>
+    <version>2.3.0.Final</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -25,11 +25,6 @@
     <dependency>
       <groupId>io.thorntail</groupId>
       <artifactId>jaxrs</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.thorntail</groupId>
-      <artifactId>monitor</artifactId>
     </dependency>
 
     <dependency>

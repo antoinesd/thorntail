@@ -49,9 +49,9 @@ public class HealthExtension implements Extension {
         }
     }
 
-    public <T> void observeResources(@Observes ProcessAnnotatedType<T> event) {
+    public void observeResources(@Observes ProcessAnnotatedType<? extends SmallRyeHealthReporter> event) {
 
-        AnnotatedType<T> annotatedType = event.getAnnotatedType();
+        AnnotatedType<? extends SmallRyeHealthReporter> annotatedType = event.getAnnotatedType();
 
         if (SmallRyeHealthReporter.class == annotatedType.getJavaClass()) {
             delegate = annotatedType;
@@ -62,10 +62,14 @@ public class HealthExtension implements Extension {
         try {
             if (delegate != null) {
                 Unmanaged<SmallRyeHealthReporter> unmanagedHealthCheck =
-                    new Unmanaged<SmallRyeHealthReporter>(beanManager, SmallRyeHealthReporter.class);
+                    new Unmanaged<>(beanManager, SmallRyeHealthReporter.class);
                 reporterInstance = unmanagedHealthCheck.newInstance();
                 reporter =  reporterInstance.produce().inject().postConstruct().get();
                 monitor.registerHealthReporter(reporter);
+
+                // THORN-2195: Use the correct TCCL when health checks are obtained
+                // In WildFly, the TCCL should always be set to the top-level deployment CL during extension notification
+                monitor.registerContextClassLoader(Thread.currentThread().getContextClassLoader());
 
                 log.info(">> Added health reporter bean " + reporter);
                 delegate = null;
@@ -84,6 +88,7 @@ public class HealthExtension implements Extension {
      */
     public void beforeShutdown(@Observes final BeforeShutdown bs) {
         monitor.unregisterHealthReporter();
+        monitor.unregisterContextClassLoader();
         reporter = null;
         reporterInstance.preDestroy().dispose();
         reporterInstance = null;

@@ -13,7 +13,7 @@
   <parent>
     <groupId>io.thorntail</groupId>
     <artifactId>build-parent</artifactId>
-    <version>2.2.0.Final</version>
+    <version>2.3.0.Final</version>
     <relativePath>../build-parent/pom.xml</relativePath>
   </parent>
 
@@ -131,7 +131,7 @@
             </goals>
             <phase>deploy</phase>
             <configuration>
-              <pubScmUrl>scm:git:git@github.com:wildfly-swarm/docs.wildfly-swarm.io.git</pubScmUrl>
+              <pubScmUrl>scm:git:git@github.com:thorntail/docs.thorntail.io.git</pubScmUrl>
               <dryRun>false</dryRun>
               <skipDeletedFiles>true</skipDeletedFiles>
               <content>${project.build.directory}/generated-docs/</content>

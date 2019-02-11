@@ -15,18 +15,8 @@
  */
 package org.wildfly.swarm.jose.jose4j;
 
-import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_JOSE_FORMAT;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.Key;
-import java.security.KeyStore;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.jose4j.base64url.Base64Url;
+import org.jose4j.json.JsonUtil;
 import org.jose4j.jwa.AlgorithmConstraints;
 import org.jose4j.jwa.AlgorithmConstraints.ConstraintType;
 import org.jose4j.jwe.JsonWebEncryption;
@@ -39,17 +29,31 @@ import org.wildfly.swarm.jose.EncryptionInput;
 import org.wildfly.swarm.jose.Jose;
 import org.wildfly.swarm.jose.JoseConfiguration;
 import org.wildfly.swarm.jose.JoseException;
+import org.wildfly.swarm.jose.JoseOperation;
+import org.wildfly.swarm.jose.JoseProperties;
 import org.wildfly.swarm.jose.SignatureInput;
 import org.wildfly.swarm.jose.VerificationOutput;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.security.Key;
+import java.security.KeyStore;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_JOSE_FORMAT;
+
 public class Jose4jJoseImpl implements Jose {
     private JoseConfiguration config;
+
     public Jose4jJoseImpl(JoseConfiguration config) {
         this.config = config;
         if (DEFAULT_JOSE_FORMAT != this.config.signatureFormat()
-           || DEFAULT_JOSE_FORMAT != this.config.encryptionFormat()) {
+                || DEFAULT_JOSE_FORMAT != this.config.encryptionFormat()) {
             throw new IllegalStateException("JWS and JWE JSON formats are not supported");
-       }
+        }
     }
 
     @Override
@@ -69,10 +73,13 @@ public class Jose4jJoseImpl implements Jose {
             jws.getHeaders().setObjectHeaderValue(HeaderParameterNames.BASE64URL_ENCODE_PAYLOAD, false);
             jws.setCriticalHeaderNames(HeaderParameterNames.BASE64URL_ENCODE_PAYLOAD);
         }
-        jws.setKey(getSignatureKey(true));
+        if (config.includeSignatureKeyAlias()) {
+            jws.setKeyIdHeaderValue(signatureKeyAlias());
+        }
+        jws.setKey(getSignatureKey(jws, JoseOperation.SIGN));
         try {
             return config.signatureDataDetached()
-                ? jws.getDetachedContentCompactSerialization() : jws.getCompactSerialization();
+                    ? jws.getDetachedContentCompactSerialization() : jws.getCompactSerialization();
         } catch (org.jose4j.lang.JoseException ex) {
             throw new JoseException(ex.getMessage(), ex);
         }
@@ -102,7 +109,7 @@ public class Jose4jJoseImpl implements Jose {
     public VerificationOutput getVerificationOutput(String compactJws, String detached) throws JoseException {
         JsonWebSignature jws = new JsonWebSignature();
         jws.setAlgorithmConstraints(new AlgorithmConstraints(ConstraintType.WHITELIST, config.signatureAlgorithm()));
-        jws.setKey(getSignatureKey(false));
+        jws.setKey(getSignatureKey(jws, JoseOperation.VERIFICATION));
         try {
             jws.setCompactSerialization(compactJws);
             if (detached != null) {
@@ -116,8 +123,9 @@ public class Jose4jJoseImpl implements Jose {
             throw new JoseException(ex.getMessage(), ex);
         }
         try {
-            String jwsPayload = jws.getPayload();
-            return new VerificationOutput(jwsPayload);
+            int firstDot = compactJws.indexOf(".");
+            String headersJson = new Base64Url().base64UrlDecodeToUtf8String(compactJws.substring(0, firstDot));
+            return new VerificationOutput(JsonUtil.parseJson(headersJson), jws.getPayload());
         } catch (org.jose4j.lang.JoseException ex) {
             throw new JoseException(ex.getMessage(), ex);
         }
@@ -137,7 +145,10 @@ public class Jose4jJoseImpl implements Jose {
         }
         jwe.setAlgorithmHeaderValue(config.keyEncryptionAlgorithm());
         jwe.setEncryptionMethodHeaderParameter(config.contentEncryptionAlgorithm());
-        jwe.setKey(getEncryptionKey(true));
+        if (config.includeEncryptionKeyAlias()) {
+            jwe.setKeyIdHeaderValue(encryptionKeyAlias());
+        }
+        jwe.setKey(getEncryptionKey(jwe, JoseOperation.ENCRYPTION));
         try {
             return jwe.getCompactSerialization();
         } catch (org.jose4j.lang.JoseException ex) {
@@ -160,42 +171,56 @@ public class Jose4jJoseImpl implements Jose {
         }
         jwe.setAlgorithmConstraints(new AlgorithmConstraints(ConstraintType.WHITELIST, config.keyEncryptionAlgorithm()));
         jwe.setContentEncryptionAlgorithmConstraints(
-            new AlgorithmConstraints(ConstraintType.WHITELIST, config.contentEncryptionAlgorithm()));
-        jwe.setKey(getEncryptionKey(false));
+                new AlgorithmConstraints(ConstraintType.WHITELIST, config.contentEncryptionAlgorithm()));
+        jwe.setKey(getEncryptionKey(jwe, JoseOperation.DECRYPTION));
         try {
-            return new DecryptionOutput(jwe.getPlaintextString());
+            int firstDot = compactJwe.indexOf(".");
+            String headersJson = new Base64Url().base64UrlDecodeToUtf8String(compactJwe.substring(0, firstDot));
+            return new DecryptionOutput(JsonUtil.parseJson(headersJson), jwe.getPlaintextString());
         } catch (org.jose4j.lang.JoseException ex) {
             throw new JoseException(ex.getMessage(), ex);
         }
     }
 
-    private Key getSignatureKey(boolean sign) {
+    private Key getSignatureKey(JsonWebSignature jws, JoseOperation operation) {
         if ("jwk".equals(this.config.keystoreType())) {
-            return getJwkKey(config.signatureKeyAlias(), config.signatureAlgorithm());
-        } else if (sign) {
-            return getJavaStorePrivateKey(config.signatureKeyAlias(), config.signatureKeyPassword());
+            return getJwkKey((operation.equals(JoseOperation.SIGN) ? signatureKeyAlias() : verificationKeyAlias(jws)),
+                    config.signatureAlgorithm());
+
+        } else if (operation.equals(JoseOperation.SIGN)) {
+            return getJavaStorePrivateKey(signatureKeyAlias(), config.signatureKeyPassword());
+
         } else {
-            return getJavaStorePublicKey(config.signatureKeyAlias());
+            return getJavaStorePublicKey(verificationKeyAlias(jws));
         }
     }
-    private Key getEncryptionKey(boolean encrypt) {
+
+    private Key getEncryptionKey(JsonWebEncryption jwe, JoseOperation operation) {
         if ("jwk".equals(this.config.keystoreType())) {
-            return getJwkKey(config.encryptionKeyAlias(), config.contentEncryptionAlgorithm());
-        } else if (encrypt) {
-            return getJavaStorePublicKey(config.encryptionKeyAlias());
+            return getJwkKey((operation.equals(JoseOperation.ENCRYPTION) ? encryptionKeyAlias() : decryptionKeyAlias(jwe)),
+                    config.contentEncryptionAlgorithm());
+
+        } else if (operation.equals(JoseOperation.ENCRYPTION)) {
+            return getJavaStorePublicKey(encryptionKeyAlias());
+
         } else {
-            return getJavaStorePrivateKey(config.encryptionKeyAlias(), config.encryptionKeyPassword());
+            return getJavaStorePrivateKey(decryptionKeyAlias(jwe), config.encryptionKeyPassword());
         }
     }
 
     private Key getJwkKey(String kid, String keyAlgorithm) {
 
-        ClassLoader cl = Thread.currentThread().getContextClassLoader();
         String jwkSetJson = null;
-        try (BufferedReader is = new BufferedReader(new InputStreamReader(cl.getResourceAsStream(config.keystorePath())))) {
-            jwkSetJson = is.lines().collect(Collectors.joining("\n"));
-        }  catch (IOException ex) {
-            throw new JoseException("Keystore can not be loaded", ex);
+        if (JoseProperties.JWK_KEYSTORE_INLINE.equals(config.keystorePath())
+            && !config.inlinedKeystoreJwkSet().isEmpty()) {
+            jwkSetJson = config.inlinedKeystoreJwkSet();
+        } else {
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            try (BufferedReader is = new BufferedReader(new InputStreamReader(cl.getResourceAsStream(config.keystorePath())))) {
+                jwkSetJson = is.lines().collect(Collectors.joining("\n"));
+            } catch (IOException ex) {
+                throw new JoseException("Keystore can not be loaded", ex);
+            }
         }
         JsonWebKeySet jwkSet = null;
         try {
@@ -241,4 +266,44 @@ public class Jose4jJoseImpl implements Jose {
             throw new JoseException("Java Key Store can not be loaded", ex);
         }
     }
+
+    private String encryptionKeyAlias() {
+        if (config.encryptionKeyAliasOut() == null) {
+            return config.encryptionKeyAlias();
+        }
+        return config.encryptionKeyAliasOut();
+    }
+
+    private String signatureKeyAlias() {
+        if (config.signatureKeyAliasOut() == null) {
+            return config.signatureKeyAlias();
+        }
+        return config.signatureKeyAliasOut();
+    }
+
+    private String verificationKeyAlias(JsonWebSignature jws) {
+
+        if (config.acceptSignatureAlias()) {
+            return jws.getKeyIdHeaderValue();
+        }
+
+        if (config.signatureKeyAliasIn() == null) {
+            return config.signatureKeyAlias();
+        }
+        return config.signatureKeyAliasIn();
+    }
+
+    private String decryptionKeyAlias(JsonWebEncryption jwe) {
+
+        if (config.acceptEncryptionAlias()) {
+            return jwe.getKeyIdHeaderValue();
+        }
+        if (config.encryptionKeyAliasIn() == null) {
+            return config.encryptionKeyAlias();
+        }
+        return config.encryptionKeyAliasIn();
+    }
+
+
+
 }

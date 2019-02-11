@@ -16,7 +16,6 @@
 
 package org.wildfly.swarm.mpopentracing.deployment;
 
-import io.smallrye.opentracing.SmallRyeTracingCDIInterceptor;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.BeforeBeanDiscovery;
@@ -32,7 +31,11 @@ public class OpenTracingCDIExtension implements Extension {
 
   public void observeBeforeBeanDiscovery(@Observes BeforeBeanDiscovery bbd, BeanManager manager) {
     logger.info("Registering Tracer CDI producer");
-    bbd.addAnnotatedType(manager.createAnnotatedType(TracerProducer.class));
-    bbd.addAnnotatedType(manager.createAnnotatedType(SmallRyeTracingCDIInterceptor.class));
+    String extensionName = OpenTracingCDIExtension.class.getName();
+    for (Class<?> clazz : new Class<?>[] {
+            TracerProducer.class,
+    }) {
+      bbd.addAnnotatedType(manager.createAnnotatedType(clazz), extensionName + "_" + clazz.getName());
+    }
   }
 }

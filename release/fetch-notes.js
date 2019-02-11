@@ -5,11 +5,12 @@ console.log( "release notes for: ", process.argv[2] );
 
 var version = process.argv[2];
 
-https.get( 'https://issues.jboss.org/rest/api/latest/search?maxResults=100&jql=project=SWARM+AND+fixVersion=' + version + '+order+by+key+asc', function(result, err) {
+https.get( 'https://issues.jboss.org/rest/api/latest/search?maxResults=100&jql=project=THORN+AND+fixVersion=' + version + '+order+by+key+asc', function(result, err) {
 
   var buf = "";
 
   var partitions = {};
+  var breaking = [];
 
   result.on( 'data', function(d) {
     buf = buf + d.toString();
@@ -28,6 +29,9 @@ https.get( 'https://issues.jboss.org/rest/api/latest/search?maxResults=100&jql=p
         partitions[e.fields.issuetype.name] = members;
       }
       members.push( e );
+      if (e.fields.labels && e.fields.labels.indexOf('breaking_change') >= 0) {
+        breaking.push(e);
+      }
     } );
 
     console.log( "== Changelog" );
@@ -41,8 +45,14 @@ https.get( 'https://issues.jboss.org/rest/api/latest/search?maxResults=100&jql=p
           console.log( '* [https://issues.jboss.org/browse/' + e.key + '[' + e.key + ']] ' + e.fields.summary + ' (' + e.fields.resolution.name + ')' );
         }
       } );
-      console.log( " " );
+      console.log();
     } );
+    if (breaking.length > 0) {
+      console.log("== Breaking changes");
+      breaking.forEach(function(e) {
+        console.log('* [https://issues.jboss.org/browse/' + e.key + '[' + e.key + ']] ' + e.fields.summary);
+      });
+    }
   } );
 
   result.resume();

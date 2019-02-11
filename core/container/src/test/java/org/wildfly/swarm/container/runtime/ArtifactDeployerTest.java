@@ -33,6 +33,26 @@ public class ArtifactDeployerTest {
     @Test
     public void testDeploy() throws Exception {
         // Given
+        System.setProperty("thorntail.deployment.[com.foo:app.war]", "");
+        ArtifactDeployer artifactDeployer = new ArtifactDeployer();
+        artifactDeployer.configView = new ConfigViewImpl();
+
+        // Stub ArtifactLookup
+        JavaArchive archive = stubArtifactLookup("com.foo:app:war:*", "app.war");
+
+        // Stub RuntimeDeployer
+        RuntimeDeployer runtimeDeployer = stubRuntimeDeployer(artifactDeployer);
+
+        // When
+        artifactDeployer.deploy();
+
+        // Then
+        verify(runtimeDeployer).deploy(archive, "com.foo:app.war");
+    }
+
+    @Test
+    public void testDeployBackwardCompatibility() throws Exception {
+        // Given
         System.setProperty("swarm.deployment.[com.foo:app.war]", "");
         ArtifactDeployer artifactDeployer = new ArtifactDeployer();
         artifactDeployer.configView = new ConfigViewImpl();
@@ -53,6 +73,26 @@ public class ArtifactDeployerTest {
     @Test
     public void testDeploy_artifactIdWithDot() throws Exception {
         // Given
+        System.setProperty("thorntail.deployment.[com.ibm:wsmq.jmsra.rar]", "");
+        ArtifactDeployer artifactDeployer = new ArtifactDeployer();
+        artifactDeployer.configView = new ConfigViewImpl();
+
+        // Stub ArtifactLookup
+        JavaArchive archive = stubArtifactLookup("com.ibm:wsmq.jmsra:rar:*", "wsmq.jmsra.rar");
+
+        // Stub RuntimeDeployer
+        RuntimeDeployer runtimeDeployer = stubRuntimeDeployer(artifactDeployer);
+
+        // When
+        artifactDeployer.deploy();
+
+        // Then
+        verify(runtimeDeployer).deploy(archive, "com.ibm:wsmq.jmsra.rar");
+    }
+
+    @Test
+    public void testDeploy_artifactIdWithDotBackwardCompatibility() throws Exception {
+        // Given
         System.setProperty("swarm.deployment.[com.ibm:wsmq.jmsra.rar]", "");
         ArtifactDeployer artifactDeployer = new ArtifactDeployer();
         artifactDeployer.configView = new ConfigViewImpl();
@@ -72,6 +112,26 @@ public class ArtifactDeployerTest {
 
     @Test
     public void testDeploy_artifactIdWithNoExtension() throws Exception {
+        // Given
+        System.setProperty("thorntail.deployment.[com.foo:artifact]", "");
+        ArtifactDeployer artifactDeployer = new ArtifactDeployer();
+        artifactDeployer.configView = new ConfigViewImpl();
+
+        // Stub ArtifactLookup
+        JavaArchive archive = stubArtifactLookup("com.foo:artifact:jar:*", "artifact.jar");
+
+        // Stub RuntimeDeployer
+        RuntimeDeployer runtimeDeployer = stubRuntimeDeployer(artifactDeployer);
+
+        // When
+        artifactDeployer.deploy();
+
+        // Then
+        verify(runtimeDeployer).deploy(archive, "com.foo:artifact");
+    }
+
+    @Test
+    public void testDeploy_artifactIdWithNoExtensionBackwardCompatible() throws Exception {
         // Given
         System.setProperty("swarm.deployment.[com.foo:artifact]", "");
         ArtifactDeployer artifactDeployer = new ArtifactDeployer();
@@ -100,7 +160,7 @@ public class ArtifactDeployerTest {
 
     private RuntimeDeployer stubRuntimeDeployer(ArtifactDeployer artifactDeployer) throws NoSuchFieldException, IllegalAccessException {
         RuntimeDeployer runtimeDeployer = mock(RuntimeDeployer.class);
-        Instance<RuntimeDeployer> runtimeDeployerInstance = mock(Instance.class);
+        Instance runtimeDeployerInstance = mock(Instance.class);
         when(runtimeDeployerInstance.get()).thenReturn(runtimeDeployer);
         Field deployer = ArtifactDeployer.class.getDeclaredField("deployer");
         deployer.setAccessible(true);

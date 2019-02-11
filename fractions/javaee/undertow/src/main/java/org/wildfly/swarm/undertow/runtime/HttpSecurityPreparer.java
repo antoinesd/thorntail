@@ -83,7 +83,7 @@ public class HttpSecurityPreparer implements DeploymentProcessor {
             String authMethod = (String) loginConfig.getOrDefault("auth-method", "NONE");
 
             // Setup login-config
-            webXml.setLoginConfig(authMethod, "ignored");
+            webXml.setLoginConfig(authMethod, (String) loginConfig.getOrDefault("realm-name", "ignored"));
 
             // security domain
             if (loginConfig.containsKey("security-domain")) {
@@ -122,7 +122,7 @@ public class HttpSecurityPreparer implements DeploymentProcessor {
     }
 
     @AttributeDocumentation("Map of security configuration by deployment")
-    @Configurable("swarm.deployment")
+    @Configurable("thorntail.deployment")
     Map<String, Object> deploymentConfigs;
 
 }

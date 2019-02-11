@@ -74,9 +74,13 @@ public class BuildTool {
     }
 
     public BuildTool(ArtifactResolvingHelper resolvingHelper) {
+        this(resolvingHelper, false);
+    }
+
+    public BuildTool(ArtifactResolvingHelper resolvingHelper, boolean removeAllThorntailLibs) {
         this.archive = ShrinkWrap.create(JavaArchive.class);
         this.resolver = new DefaultArtifactResolver(resolvingHelper);
-        this.dependencyManager = new DependencyManager(resolver);
+        this.dependencyManager = new DependencyManager(resolver, removeAllThorntailLibs);
     }
 
     public BuildTool declaredDependencies(DeclaredDependencies declaredDependencies) {
@@ -433,7 +437,7 @@ public class BuildTool {
     private void addWildFlySwarmApplicationManifest() {
         WildFlySwarmManifest manifest = this.dependencyManager.getWildFlySwarmManifest();
 
-        this.properties.put("swarm.uberjar.build.user", System.getProperty("user.name"));
+        this.properties.put("thorntail.uberjar.build.user", System.getProperty("user.name"));
         if (!this.hollow) {
             this.properties.put(BootstrapProperties.APP_ARTIFACT, this.projectAsset.getSimpleName());
         }

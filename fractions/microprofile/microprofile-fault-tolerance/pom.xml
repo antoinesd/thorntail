@@ -20,7 +20,7 @@
   <parent>
     <groupId>io.thorntail</groupId>
     <artifactId>build-parent</artifactId>
-    <version>2.2.0.Final</version>
+    <version>2.3.0.Final</version>
     <relativePath>../../../build-parent/pom.xml</relativePath>
   </parent>
 
@@ -81,6 +81,10 @@
       <artifactId>microprofile-config</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.thorntail</groupId>
+      <artifactId>microprofile-metrics</artifactId>
+    </dependency>
+    <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-fault-tolerance</artifactId>
       <exclusions>
@@ -104,6 +108,19 @@
       <artifactId>javax.enterprise.concurrent-api</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+       <groupId>org.jboss.weld</groupId>
+       <artifactId>weld-spi</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>org.jboss.weld</groupId>
+       <artifactId>weld-api</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>org.jboss.weld</groupId>
+       <artifactId>weld-core-impl</artifactId>
+    </dependency>
+
   </dependencies>
 
 </project>

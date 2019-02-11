@@ -10,7 +10,7 @@
   <parent>
     <groupId>io.thorntail</groupId>
     <artifactId>thorntail</artifactId>
-    <version>2.2.0.Final</version>
+    <version>2.3.0.Final</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -32,10 +32,10 @@
     <version.mysql>5.1.39</version.mysql>
     <version.postgresql>9.4.1208</version.postgresql>
 
-    <version.resteasy>3.0.19.Final</version.resteasy>
-    <version.remoting>2.0.1.Final</version.remoting>
-    <version.wildfly-controller>2.2.1.Final</version.wildfly-controller>
-    <version.jackson>2.7.4</version.jackson>
+    <version.resteasy>3.6.2.Final</version.resteasy>
+    <version.remoting>3.0.0.Final</version.remoting>
+    <version.wildfly-controller>7.0.0.Final</version.wildfly-controller>
+    <version.jackson>2.9.5</version.jackson>
     <httpclient.version>4.5</httpclient.version>
     <fluent-hc.version>4.5</fluent-hc.version>
   </properties>
@@ -54,6 +54,13 @@
         <artifactId>maven-deploy-plugin</artifactId>
         <configuration>
           <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <configuration>
+          <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
         </configuration>
       </plugin>
       <plugin>

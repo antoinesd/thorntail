@@ -15,10 +15,6 @@
  */
 package org.wildfly.swarm.tools;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
-
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -26,6 +22,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.wildfly.swarm.bootstrap.env.FractionManifest;
 import org.wildfly.swarm.bootstrap.env.WildFlySwarmManifest;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -36,8 +36,8 @@ public class DependencyManagerTest {
 
     private static MockArtifactResolver RESOLVER = new MockArtifactResolver();
 
-    private static ArtifactSpec SERVLET_SPEC = simple("org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:jar:1.0.0.Final");
-    private static ArtifactSpec JAXRS_SPEC = simple("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.0.Final", (config)->{
+    private static ArtifactSpec SERVLET_SPEC = simple("org.jboss.spec.javax.servlet:jboss-servlet-api_4.0_spec:jar:1.0.0.Final");
+    private static ArtifactSpec JAXRS_SPEC = simple("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:1.0.1.Final", (config)->{
         config.addDependency( SERVLET_SPEC );
     });
 
@@ -58,7 +58,7 @@ public class DependencyManagerTest {
 
     @Before
     public void setUp() {
-        this.manager = new DependencyManager(RESOLVER);
+        this.manager = new DependencyManager(RESOLVER, false);
     }
 
     @Test

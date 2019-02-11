@@ -76,6 +76,7 @@ import org.wildfly.swarm.bootstrap.logging.BootstrapLogger;
 import org.wildfly.swarm.bootstrap.modules.BootModuleLoader;
 import org.wildfly.swarm.bootstrap.performance.Performance;
 import org.wildfly.swarm.bootstrap.util.BootstrapProperties;
+import org.wildfly.swarm.bootstrap.util.BootstrapUtil;
 import org.wildfly.swarm.cli.CommandLine;
 import org.wildfly.swarm.container.DeploymentException;
 import org.wildfly.swarm.container.config.ClassLoaderConfigLocator;
@@ -138,7 +139,7 @@ public class Swarm {
 
     private static final String BOOT_MODULE_PROPERTY = "boot.module.loader";
 
-    public static final String APPLICATION_MODULE_NAME = "swarm.application";
+    public static final String APPLICATION_MODULE_NAME = "thorntail.application";
 
     private static final String CONTAINER_MODULE_NAME = "swarm.container";
 
@@ -212,6 +213,8 @@ public class Swarm {
             Module.setModuleLogger(new StreamModuleLogger(System.err));
         }
 
+        BootstrapUtil.convertSwarmSystemPropertiesToThorntail();
+
         setArgs(args);
         this.debugBootstrap = debugBootstrap;
 
@@ -223,7 +226,6 @@ public class Swarm {
             try {
                 Thread.currentThread().setContextClassLoader(loggingModule.getClassLoader());
                 System.setProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager");
-                System.setProperty("org.jboss.logmanager.configurator", "org.wildfly.swarm.container.runtime.wildfly.LoggingConfigurator");
                 //force logging init
                 LogManager.getLogManager();
                 Class<?> logManagerClass = loggingModule.getClassLoader().loadClass("org.wildfly.swarm.container.runtime.logging.JBossLoggingManager");
@@ -379,7 +381,7 @@ public class Swarm {
     public Swarm start() throws Exception {
         INSTANCE = this;
 
-        try (AutoCloseable handle = Performance.time("Swarm.start()")) {
+        try (AutoCloseable handle = Performance.time("Thorntail.start()")) {
 
             Module module = Module.getBootModuleLoader().loadModule(CONTAINER_MODULE_NAME);
             Class<?> bootstrapClass = module.getClassLoader().loadClass("org.wildfly.swarm.container.runtime.ServerBootstrapImpl");
@@ -740,7 +742,7 @@ public class Swarm {
 
         try {
             swarm.start();
-            if (System.getProperty("swarm.inhibit.default-deployment") == null) {
+            if (System.getProperty("thorntail.inhibit.default-deployment") == null) {
                 swarm.deploy();
             }
         } catch (final VirtualMachineError vme) {
@@ -748,7 +750,7 @@ public class Swarm {
             vme.printStackTrace();
             System.exit(1);
         } catch (final Throwable t) {
-            if (System.getProperty("swarm.inhibit.auto-stop") == null) {
+            if (System.getProperty("thorntail.inhibit.auto-stop") == null) {
                 t.printStackTrace();
                 tryToStopAfterStartupError(t, swarm);
             }

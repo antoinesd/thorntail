@@ -28,6 +28,12 @@ public interface JoseProperties {
     boolean DEFAULT_SIGNATURE_DATA_DETACHED = false;
     String DEFAULT_KEY_ENCRYPTION_ALGORITHM = "RSA-OAEP";
     String DEFAULT_CONTENT_ENCRYPTION_ALGORITHM = "A128GCM";
+    boolean DEFAULT_INCLUDE_ENCRYPTION_KEY_ALIAS = true;
+    boolean DEFAULT_INCLUDE_SIGNATURE_KEY_ALIAS = true;
+    boolean DEFAULT_ACCEPT_ENCRYPTION_ALIAS = false;
+    boolean DEFAULT_ACCEPT_VERIFICATION_ALIAS = false;
 
     JoseFormat DEFAULT_JOSE_FORMAT = JoseFormat.COMPACT;
+    String JWK_KEYSTORE_INLINE = "inline";
+    String INLINED_KEYSTORE_JWKSET = "jwkset";
 }

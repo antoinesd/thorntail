@@ -8,7 +8,7 @@
    <parent>
       <groupId>io.thorntail.testsuite</groupId>
       <artifactId>testsuite-parent</artifactId>
-      <version>2.2.0.Final</version>
+      <version>2.3.0.Final</version>
       <relativePath>../</relativePath>
    </parent>
 
@@ -37,5 +37,23 @@
       </dependency>
 
    </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+               <systemProperties>
+                  <!-- Set the log level for smallrye  -->
+                  <property>
+                     <name>swarm.logging.loggers.[io.smallrye].level</name>
+                     <value>INFO</value>
+                  </property>
+               </systemProperties>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
 
 </project>

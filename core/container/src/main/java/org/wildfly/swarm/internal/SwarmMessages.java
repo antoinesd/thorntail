@@ -102,7 +102,7 @@ public interface SwarmMessages extends BasicLogger {
     @Message(id = 19, value = "Install MSC service for command line args: %s")
     void argsInstalled(List<String> args);
 
-    @Message(id = 20, value = "HTTP/S is configured correctly, but org.wildfly.swarm:management is not available")
+    @Message(id = 20, value = "HTTP/S is configured correctly, but io.thorntail:management is not available")
     RuntimeException httpsRequiresManagementFraction();
 
     @LogMessage(level = Logger.Level.WARN)
@@ -153,6 +153,8 @@ public interface SwarmMessages extends BasicLogger {
     @Message(id = 31, value = "Registered archive-preparer: %s")
     void registeredArchivePreparer(String preparer);
 
+    @Message(id = 32, value = "Invalid file system layout: %s")
+    String invalidFileSystemLayoutProvided(String message);
 
     // ------------------------------------------------------------------------
     // ------------------------------------------------------------------------

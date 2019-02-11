@@ -15,7 +15,11 @@
  */
 package org.wildfly.swarm.jose;
 
+import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_ACCEPT_ENCRYPTION_ALIAS;
+import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_ACCEPT_VERIFICATION_ALIAS;
 import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_CONTENT_ENCRYPTION_ALGORITHM;
+import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_INCLUDE_ENCRYPTION_KEY_ALIAS;
+import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_INCLUDE_SIGNATURE_KEY_ALIAS;
 import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_JOSE_FORMAT;
 import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_KEYSTORE_PASSWORD;
 import static org.wildfly.swarm.jose.JoseProperties.DEFAULT_KEYSTORE_PATH;
@@ -71,6 +75,15 @@ public class JoseConfiguration {
         return this.keystorePath.get();
     }
 
+    public JoseConfiguration inlinedKeystoreJwkSet(String jwkSet) {
+        this.inlinedKeystoreJwkSet.set(jwkSet);
+        return this;
+    }
+
+    public String inlinedKeystoreJwkSet() {
+        return this.inlinedKeystoreJwkSet.get();
+    }
+
     public JoseConfiguration signatureKeyAlias(String keyAlias) {
         this.signatureKeyAlias.set(keyAlias);
         return this;
@@ -78,6 +91,14 @@ public class JoseConfiguration {
 
     public String signatureKeyAlias() {
         return this.signatureKeyAlias.get();
+    }
+
+    public String signatureKeyAliasOut() {
+        return this.signatureKeyAliasOut;
+    }
+
+    public String signatureKeyAliasIn() {
+        return this.signatureKeyAliasIn;
     }
 
     public JoseConfiguration signatureAlgorithm(String algorithm) {
@@ -134,6 +155,32 @@ public class JoseConfiguration {
         return this.encryptionKeyAlias.get();
     }
 
+    public String encryptionKeyAliasOut() {
+        return this.encryptionKeyAliasOut;
+    }
+
+    public String encryptionKeyAliasIn() {
+        return this.encryptionKeyAliasIn;
+    }
+
+    public JoseConfiguration includeEncryptionKeyAlias(boolean include) {
+        includeEncryptionKeyAlias.set(include);
+        return this;
+    }
+
+    public boolean includeEncryptionKeyAlias() {
+        return this.includeEncryptionKeyAlias.get();
+    }
+
+    public boolean includeSignatureKeyAlias() {
+        return includeSignatureKeyAlias.get();
+    }
+
+    public JoseConfiguration includeSignatureKeyAlias(boolean includeSignatureKeyAlias) {
+        this.includeSignatureKeyAlias.set(includeSignatureKeyAlias);
+        return this;
+    }
+
     public JoseConfiguration encryptionKeyPassword(String password) {
         this.encryptionKeyPassword.set(password);
         return this;
@@ -160,101 +207,188 @@ public class JoseConfiguration {
     public String contentEncryptionAlgorithm() {
         return this.contentEncryptionAlgorithm.get();
     }
+
+
+    public JoseConfiguration setAcceptEncryptionAlias(boolean acceptEncryptionAlias) {
+        this.acceptEncryptionAlias.set(acceptEncryptionAlias);
+        return this;
+    }
+
+    public boolean acceptEncryptionAlias() {
+        return acceptEncryptionAlias.get();
+    }
+
+
+    public boolean acceptSignatureAlias() {
+        return acceptSignatureAlias.get();
+    }
+
+    public JoseConfiguration acceptSignatureAlias(boolean acceptSignatureAlias) {
+        this.acceptSignatureAlias.set(acceptSignatureAlias);
+        return this;
+    }
+
     /**
      * Keystore type.
      */
-    @Configurable("swarm.jose.keystore.type")
+    @Configurable("thorntail.jose.keystore.type")
     @AttributeDocumentation("Keystore type: Java KeyStore type or 'jwk' - JSON Web Key store, see RFC7517, section 5")
     private Defaultable<String> keystoreType = string(DEFAULT_KEYSTORE_TYPE);
 
     /**
      * Path to the keystore.
      */
-    @Configurable("swarm.jose.keystore.path")
+    @Configurable("thorntail.jose.keystore.path")
     @AttributeDocumentation("Path to the keystore, only the classpath is currently supported")
     private Defaultable<String> keystorePath = string(DEFAULT_KEYSTORE_PATH);
 
     /**
+     * JWK keystore JWK Set.
+     */
+    @Configurable("thorntail.jose.keystore.jwkset")
+    @AttributeDocumentation("Inlined keystore Json Web Key Set")
+    private Defaultable<String> inlinedKeystoreJwkSet = string("");
+
+    /**
      * Password for the keystore.
      */
-    @Configurable("swarm.jose.keystore.password")
+    @Configurable("thorntail.jose.keystore.password")
     @AttributeDocumentation("Password to the keystore")
     private Defaultable<String> keystorePassword = string(DEFAULT_KEYSTORE_PASSWORD);
 
     /**
      * Signature algorithm.
      */
-    @Configurable("swarm.jose.signature.algorithm")
+    @Configurable("thorntail.jose.signature.algorithm")
     @AttributeDocumentation("Signature algorithm: see RFC7518, Section 3")
     private Defaultable<String> signatureAlgorithm = string(DEFAULT_SIGNATURE_ALGORITHM);
 
     /**
      * Signature Format.
      */
-    @Configurable("swarm.jose.signature.format")
+    @Configurable("thorntail.jose.signature.format")
     @AttributeDocumentation("Signature format: COMPACT (default) or JSON (support  is optional)")
     private Defaultable<String> signatureFormat = string(DEFAULT_JOSE_FORMAT.name());
 
     /**
      * Signature Data Encoding.
      */
-    @Configurable("swarm.jose.signature.data-encoding")
+    @Configurable("thorntail.jose.signature.data-encoding")
     @AttributeDocumentation("Signature data encoding mode: true - Base64Url (default), false - clear text")
     private Defaultable<Boolean> signatureDataEncoding = bool(DEFAULT_SIGNATURE_DATA_ENCODING);
 
     /**
      * Signature Detached Data.
      */
-    @Configurable("swarm.jose.signature.data-detached")
+    @Configurable("thorntail.jose.signature.data-detached")
     @AttributeDocumentation("Signature detached mode: true - the data is in the sequence (default), false - outside")
     private Defaultable<Boolean> signatureDataDetached = bool(DEFAULT_SIGNATURE_DATA_DETACHED);
 
     /**
      * Password for the signature key.
      */
-    @Configurable("swarm.jose.signature.key.password")
+    @Configurable("thorntail.jose.signature.key.password")
     @AttributeDocumentation("Password to the signature private key")
     private Defaultable<String> signatureKeyPassword = string(DEFAULT_KEY_PASSWORD);
 
     /**
      * Alias to the signature key entry in the keystore.
      */
-    @Configurable("swarm.jose.signature.key.alias")
+    @Configurable("thorntail.jose.signature.key.alias")
     @AttributeDocumentation("Alias to the signature key entry in the keystore")
     private Defaultable<String> signatureKeyAlias = string(DEFAULT_KEY_ALIAS);
 
     /**
      * Encryption Format.
      */
-    @Configurable("swarm.jose.encryption.format")
+    @Configurable("thorntail.jose.encryption.format")
     @AttributeDocumentation("Encryption format: COMPACT (default) or JSON (support is optional)")
     private Defaultable<String> encryptionFormat = string(DEFAULT_JOSE_FORMAT.name());
 
     /**
      * Key Encryption algorithm.
      */
-    @Configurable("swarm.jose.encryption.keyAlgorithm")
+    @Configurable("thorntail.jose.encryption.keyAlgorithm")
     @AttributeDocumentation("Key encryption algorithm: see RFC7518, Section 4")
     private Defaultable<String> keyEncryptionAlgorithm = string(DEFAULT_KEY_ENCRYPTION_ALGORITHM);
 
     /**
      * Content Encryption algorithm.
      */
-    @Configurable("swarm.jose.encryption.contentAlgorithm")
+    @Configurable("thorntail.jose.encryption.contentAlgorithm")
     @AttributeDocumentation("Content encryption algorithm: : see RFC7518, Section 5")
     private Defaultable<String> contentEncryptionAlgorithm = string(DEFAULT_CONTENT_ENCRYPTION_ALGORITHM);
 
     /**
      * Password for the encryption key.
      */
-    @Configurable("swarm.jose.encryption.key.password")
+    @Configurable("thorntail.jose.encryption.key.password")
     @AttributeDocumentation("Password to the encryption private key")
     private Defaultable<String> encryptionKeyPassword = string(DEFAULT_KEY_PASSWORD);
 
     /**
      * Alias to the encryption key entry in the keystore.
      */
-    @Configurable("swarm.jose.encryption.key.alias")
-    @AttributeDocumentation("Alias to the encryption key entry in the keystore")
+    @Configurable("thorntail.jose.encryption.key.alias")
+    @AttributeDocumentation("Key Alias in the keystore to be used for the encryption or decryption, by default")
     private Defaultable<String> encryptionKeyAlias = string(DEFAULT_KEY_ALIAS);
+
+    /**
+     * Include Encryption Key Alias as the JOSE 'kid' Header.
+     */
+    @Configurable("thorntail.jose.encryption.include.alias")
+    @AttributeDocumentation("Include the encryption key alias as the JOSE 'kid' header (defaults to true)")
+    private Defaultable<Boolean> includeEncryptionKeyAlias = bool(DEFAULT_INCLUDE_ENCRYPTION_KEY_ALIAS);
+
+    /**
+     * Include Signature Key Alias as the JOSE 'kid' Header.
+     */
+    @Configurable("thorntail.jose.signature.include.alias")
+    @AttributeDocumentation("Include the signature key alias as the JOSE 'kid' header (defaults to true)")
+    private Defaultable<Boolean> includeSignatureKeyAlias = bool(DEFAULT_INCLUDE_SIGNATURE_KEY_ALIAS);
+
+    /**
+     * Encryption Key Alias in the keystore to be used for the encryption.
+     */
+    @Configurable("thorntail.jose.encryption.out.key.alias")
+    @AttributeDocumentation("Key Alias in the keystore to be used for encryption only")
+    private String encryptionKeyAliasOut;
+
+    /**
+     * Decryption Key Alias in the keystore to be used for the decryption.
+     */
+    @Configurable("thorntail.jose.encryption.in.key.alias")
+    @AttributeDocumentation("Key Alias in the keystore to be used for decryption only")
+    private String encryptionKeyAliasIn;
+
+    /**
+     * Alias to the signature key entry in the keystore for signing.
+     */
+    @Configurable("thorntail.jose.signature.out.key.alias")
+    @AttributeDocumentation("Alias to the signature key entry in the keystore used for signing only")
+    private String signatureKeyAliasOut;
+
+    /**
+     * Alias to the signature key entry in the keystore for verification.
+     */
+    @Configurable("thorntail.jose.signature.in.key.alias")
+    @AttributeDocumentation("Alias to the signature key entry in the keystore used for verification only")
+    private String signatureKeyAliasIn;
+
+    /**
+     * Accept the encryption alias for decryption.
+     */
+    @Configurable("thorntail.jose.encryption.accept.alias")
+    @AttributeDocumentation("Accept key alias for decryption (defaults to false).")
+    private Defaultable<Boolean> acceptEncryptionAlias = bool(DEFAULT_ACCEPT_ENCRYPTION_ALIAS);
+
+
+    /**
+     * Accept the signature alias for verification.
+     */
+    @Configurable("thorntail.jose.signature.accept.alias")
+    @AttributeDocumentation("Accept signature alias for verification (defaults to false).")
+    private Defaultable<Boolean> acceptSignatureAlias = bool(DEFAULT_ACCEPT_VERIFICATION_ALIAS);
+
+
 }

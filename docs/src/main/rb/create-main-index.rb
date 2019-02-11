@@ -16,7 +16,7 @@ seenSnapshot = false
 versions.reject! {|e|
   puts "test #{e}"
   result = false;
-  if ( e.include? '-SNAPSHOT' )
+  if ( !e.include?('4.0.0') && e.include?('-SNAPSHOT') )
     if ( seenSnapshot )
       puts "reject-1 #{e}"
       result = true;
