@@ -37,8 +37,8 @@
     <version.wildfly.nosql.feature-pack>1.0.1.Final</version.wildfly.nosql.feature-pack>
 
     <version.jboss-modules>1.8.7.Final</version.jboss-modules>
-    <version.wildfly>7.1.4.GA-redhat-1</version.wildfly>
-    <version.org.wildfly.core>3.0.17.Final-redhat-1</version.org.wildfly.core>
+    <version.wildfly>7.2.0.GA-redhat-00005</version.wildfly>
+    <version.org.wildfly.core>6.0.11.Final-redhat-00001</version.org.wildfly.core>
     <version.jboss-logmanager-ext>1.0.0.Alpha5</version.jboss-logmanager-ext>
     <!-- Weld SE version must be aligned with the version used in WildFly -->
     <version.weld-se>2.4.7.Final-redhat-1</version.weld-se>
@@ -458,28 +458,12 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-config-api</artifactId>
-        <version>${version.wildfly-microprofile-config}</version>
+        <version>${version.microprofile-config}</version>
         <exclusions>
           <exclusion>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.annotation.versioning</artifactId>
           </exclusion>
-        </exclusions>
-      </dependency>
-
-      <dependency>
-        <groupId>io.smallrye</groupId>
-        <artifactId>smallrye-health</artifactId>
-        <version>${version.smallrye.health}</version>
-        <exclusions>
-           <exclusion>
-              <groupId>org.osgi</groupId>
-              <artifactId>org.osgi.annotation.versioning</artifactId>
-           </exclusion>
-           <exclusion>
-              <groupId>org.eclipse.microprofile.health</groupId>
-              <artifactId>microprofile-health-api</artifactId>
-           </exclusion>
         </exclusions>
       </dependency>
 
@@ -536,6 +520,16 @@
         <groupId>io.smallrye</groupId>
         <artifactId>smallrye-health</artifactId>
         <version>${version.smallrye.health}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.annotation.versioning</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.eclipse.microprofile.health</groupId>
+            <artifactId>microprofile-health-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
@@ -617,7 +611,7 @@
       <dependency>
         <groupId>io.smallrye</groupId>
         <artifactId>smallrye-open-api</artifactId>
-        <version>${version.smallrye.open-api}</version>
+        <version>${version.smallrye.openapi}</version>
         <exclusions>
           <exclusion>
             <groupId>org.jboss</groupId>
@@ -634,22 +628,6 @@
           <exclusion>
               <groupId>org.osgi</groupId>
               <artifactId>org.osgi.annotation.versioning</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-
-      <dependency>
-        <groupId>io.smallrye</groupId>
-        <artifactId>smallrye-open-api</artifactId>
-        <version>${version.smallrye.openapi}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jboss</groupId>
-            <artifactId>jandex</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.jboss.shrinkwrap</groupId>
-            <artifactId>shrinkwrap-api</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
