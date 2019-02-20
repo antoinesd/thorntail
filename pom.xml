@@ -14,7 +14,7 @@
   </parent>
 
   <artifactId>thorntail</artifactId>
-  <version>${version.wildfly.swarm}</version>
+  <version>2.3.0.Final</version>
 
   <name>Root</name>
   <description>Root</description>
@@ -25,7 +25,7 @@
     <connection>scm:git:git@github.com:thorntail/thorntail.git</connection>
     <developerConnection>scm:git:git@github.com:thorntail/thorntail.git</developerConnection>
     <url>https://github.com/thorntail/thorntail</url>
-    <tag>${version.wildfly.swarm}</tag>
+    <tag>2.3.0.Final</tag>
   </scm>
 
   <properties>
@@ -266,40 +266,40 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>build-parent</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>build-resources</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cli</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>tools</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>meta-spi</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>fraction-metadata</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>spi</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
@@ -326,455 +326,455 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>asciidoctorj</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>batch-jberet</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>bean-validation</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>maven-utils</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cdi</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cdi-config</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-client-api</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cdi-jaxrsapi</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>connector</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>container</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>datasources</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>drools-server</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ee</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ee-security</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ejb</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ejb-remote</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>elytron</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>full</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>flyway</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>hibernate-search</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>hibernate-validator</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>infinispan</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>io</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaeger</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>javafx</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-cdi</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-jaxb</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-multipart</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-validator</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-jsonp</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-jsonb</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jca</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jdr</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jgroups</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jmx</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jolokia</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jpa</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jpa-spatial</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jpa-eclipselink</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jsf</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jsonp</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jsonb</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>keycloak</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>keycloak-server</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>logging</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>logstash</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mail</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>management</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>management-console</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>messaging</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-config</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-health</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-jwt</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-metrics</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-openapi</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-fault-tolerance</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-restclient</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>opentracing-tracerresolver</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-opentracing</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mod_cluster</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>monitor</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>msc</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mvc</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>naming</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <!-- NoSQL -->
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cassandra</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mongodb</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>neo4j</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>orientdb</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>opentracing</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>remoting</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>request-controller</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>resource-adapters</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>hystrix</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
@@ -792,104 +792,104 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>security</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>spring</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>swagger</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>swagger-webapp</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-consul</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-jgroups</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-openshift</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-webapp</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>transactions</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>undertow</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>vertx</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>web</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>webservices</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>zipkin-jaxrs</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jose</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>thorntail-gradle-tooling</artifactId>
-        <version>${version.wildfly.swarm}</version>
+        <version>2.3.0.Final</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
