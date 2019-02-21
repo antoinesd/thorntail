@@ -31,7 +31,7 @@
   <properties>
     <version.wildfly.swarm.checkstyle>3</version.wildfly.swarm.checkstyle>
 
-    <version.certified-community>2.2.0.Final</version.certified-community>
+    <version.certified-community>2.3.0.Final</version.certified-community>
     <version.wildfly.swarm>${project.version}</version.wildfly.swarm>
 
     <version.org.arquillian>1.1.15.Final</version.org.arquillian>
@@ -305,22 +305,22 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>arquillian</artifactId>
-        <version>2.3.0.Final</version>
+        <version>${version.wildfly.swarm}</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>arquillian-daemon</artifactId>
-        <version>2.3.0.Final</version>
+        <version>${version.wildfly.swarm}</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>arquillian-adapter</artifactId>
-        <version>2.3.0.Final</version>
+        <version>${version.wildfly.swarm}</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>arquillian-resolver</artifactId>
-        <version>2.3.0.Final</version>
+        <version>${version.wildfly.swarm}</version>
       </dependency>
 
       <dependency>
@@ -780,13 +780,13 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ribbon</artifactId>
-        <version>2.3.0.Final</version>
+        <version>${version.wildfly.swarm}</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ribbon-secured</artifactId>
-        <version>2.3.0.Final</version>
+        <version>${version.wildfly.swarm}</version>
       </dependency>
 
       <dependency>
@@ -980,6 +980,7 @@
     <module>fractions/wildfly/msc</module>
     <module>fractions/wildfly/request-controller</module>
     <module>fractions/wildfly/security</module>
+    <module>fractions/wildfly/infinispan</module>
 
     <module>fractions/keycloak</module>
     <module>fractions/microprofile/microprofile-config</module>
@@ -1069,7 +1070,6 @@
         <module>fractions/javaee/messaging</module>
         <module>fractions/javaee/webservices</module>
 
-        <module>fractions/wildfly/infinispan</module>
         <module>fractions/wildfly/jgroups</module>
 
         <module>fractions/asciidoctorj</module>
