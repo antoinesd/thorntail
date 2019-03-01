@@ -11,4 +11,4 @@ else
   echo "Using existing $FILE"
 fi
 
-java -jar $FILE -DdependencySource=REST -DversionIncrementalSuffix=redhat -DrestURL=http://da.psi.redhat.com/da/rest/v-1 "$@"
+java -jar $FILE -DdependencySource=REST -DversionIncrementalSuffix=redhat -DversionIncrementalSuffixPadding=5 -DrestURL=http://da.psi.redhat.com/da/rest/v-1 "$@"
