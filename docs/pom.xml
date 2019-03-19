@@ -13,7 +13,7 @@
   <parent>
     <groupId>io.thorntail</groupId>
     <artifactId>build-parent</artifactId>
-    <version>2.3.0.Final</version>
+    <version>2.4.0.Final</version>
     <relativePath>../build-parent/pom.xml</relativePath>
   </parent>
 
@@ -73,8 +73,15 @@
       <plugin>
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctor-maven-plugin</artifactId>
-        <version>1.5.6</version>
+        <version>1.5.7.1</version>
         <inherited>false</inherited>
+        <dependencies>
+          <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>${version.jruby}</version>
+          </dependency>
+        </dependencies>
         <configuration>
           <attributes>
             <docinfo>shared</docinfo>

@@ -14,7 +14,7 @@
   </parent>
 
   <artifactId>thorntail</artifactId>
-  <version>2.3.0.Final</version>
+  <version>2.4.0.Final</version>
 
   <name>Root</name>
   <description>Root</description>
@@ -25,13 +25,13 @@
     <connection>scm:git:git@github.com:thorntail/thorntail.git</connection>
     <developerConnection>scm:git:git@github.com:thorntail/thorntail.git</developerConnection>
     <url>https://github.com/thorntail/thorntail</url>
-    <tag>2.3.0.Final</tag>
+    <tag>2.4.0.Final</tag>
   </scm>
 
   <properties>
     <version.wildfly.swarm.checkstyle>3</version.wildfly.swarm.checkstyle>
 
-    <version.certified-community>2.3.0.Final</version.certified-community>
+    <version.certified-community>2.4.0.Final</version.certified-community>
     <version.wildfly.swarm>${project.version}</version.wildfly.swarm>
 
     <version.org.arquillian>1.1.15.Final</version.org.arquillian>
@@ -52,7 +52,9 @@
     <version.com.googlecode.concurrentlinkedhashmap>1.4.1</version.com.googlecode.concurrentlinkedhashmap>
     <version.com.tinkerpop.blueprints>2.6.0</version.com.tinkerpop.blueprints>
 
-    <version.jruby-maven-plugin>1.1.3</version.jruby-maven-plugin>
+    <version.jruby>9.2.5.0</version.jruby>
+
+    <version.jruby-maven-plugin>1.1.6</version.jruby-maven-plugin>
     <version.maven-plugin-plugin>3.5</version.maven-plugin-plugin>
     <version.maven-shade-plugin>2.4.1</version.maven-shade-plugin>
     <version.build-helper-maven-plugin>1.9.1</version.build-helper-maven-plugin>
@@ -170,6 +172,9 @@
           <groupId>de.saumya.mojo</groupId>
           <artifactId>jruby-maven-plugin</artifactId>
           <version>${version.jruby-maven-plugin}</version>
+          <configuration>
+            <jrubyVersion>${version.jruby}</jrubyVersion>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -266,40 +271,40 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>build-parent</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>build-resources</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cli</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>tools</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>meta-spi</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>fraction-metadata</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>spi</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
@@ -326,455 +331,461 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>asciidoctorj</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>batch-jberet</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>bean-validation</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>maven-utils</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cdi</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cdi-config</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-client-api</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cdi-jaxrsapi</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>connector</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>container</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>datasources</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>drools-server</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ee</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ee-security</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ejb</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>ejb-remote</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>elytron</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>full</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>flyway</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>hibernate-search</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>hibernate-validator</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>infinispan</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>io</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaeger</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>javafx</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-cdi</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-jaxb</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-multipart</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-validator</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-jsonp</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jaxrs-jsonb</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jca</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jdr</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jgroups</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jmx</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jolokia</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jpa</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jpa-spatial</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jpa-eclipselink</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jsf</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jsonp</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jsonb</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>keycloak</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.thorntail</groupId>
+        <artifactId>keycloak-microprofile-jwt</artifactId>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>keycloak-server</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>logging</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>logstash</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mail</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>management</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>management-console</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>messaging</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-config</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-health</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-jwt</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-metrics</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-openapi</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-fault-tolerance</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-restclient</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>opentracing-tracerresolver</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>microprofile-opentracing</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mod_cluster</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>monitor</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>msc</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mvc</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>naming</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <!-- NoSQL -->
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>cassandra</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>mongodb</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>neo4j</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>orientdb</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>opentracing</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>remoting</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>request-controller</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>resource-adapters</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>hystrix</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
@@ -792,104 +803,104 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>security</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>spring</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>swagger</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>swagger-webapp</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-consul</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-jgroups</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-openshift</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>topology-webapp</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>transactions</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>undertow</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>vertx</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>web</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>webservices</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>zipkin-jaxrs</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>jose</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
 
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>thorntail-gradle-tooling</artifactId>
-        <version>2.3.0.Final</version>
+        <version>2.4.0.Final</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -1079,6 +1090,7 @@
         <module>fractions/javafx</module>
         <module>fractions/jolokia</module>
         <module>fractions/logstash</module>
+        <module>fractions/keycloak-microprofile-jwt</module>
         <module>fractions/keycloak-server</module>
         <module>fractions/spring</module>
         <module>fractions/swagger</module>
@@ -1231,11 +1243,13 @@
         <module>testsuite/testsuite-jolokia</module>
         <module>testsuite/testsuite-jolokia-keycloak</module>
         <module>testsuite/testsuite-keycloak</module>
+        <module>testsuite/testsuite-keycloak-mpjwt</module>
         <module>testsuite/testsuite-keycloak-server</module>
         <module>testsuite/testsuite-logstash</module>
         <module>testsuite/testsuite-mail</module>
         <module>testsuite/testsuite-mail-cdi</module>
         <module>testsuite/testsuite-management-console</module>
+        <module>testsuite/testsuite-management-console-openapi</module>
         <module>testsuite/testsuite-messaging</module>
         <module>testsuite/testsuite-messaging-remote</module>
         <module>testsuite/testsuite-microprofile-openapi</module>
@@ -1245,6 +1259,7 @@
         <module>testsuite/testsuite-jaeger-opentracing</module>
         <module>testsuite/testsuite-jaeger-microprofile-opentracing</module>
         <module>testsuite/testsuite-opentracing</module>
+        <module>testsuite/testsuite-scriptengine</module>
         <module>testsuite/testsuite-spring</module>
         <module>testsuite/testsuite-swagger</module>
         <module>testsuite/testsuite-swagger-customized</module>
