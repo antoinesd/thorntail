@@ -89,11 +89,6 @@
       <groupId>io.jaegertracing</groupId>
       <artifactId>jaeger-thrift</artifactId>
       <version>${version.jaeger}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.jaegertracing</groupId>
-      <artifactId>jaeger-thrift</artifactId>
-      <version>${version.jaeger}</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.httpcomponents</groupId>
