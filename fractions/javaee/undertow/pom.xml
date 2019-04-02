@@ -134,10 +134,12 @@
           <groupId>org.jboss.xnio</groupId>
           <artifactId>xnio-nio</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging</artifactId>
+        </exclusion>
       </exclusions>
     </dependency>
-
-    <!-- start 2.2.0.Final managed -->
     <dependency>
       <groupId>org.jboss.xnio</groupId>
       <artifactId>xnio-api</artifactId>
@@ -152,22 +154,22 @@
         </exclusion>
       </exclusions>
     </dependency>
-
     <dependency>
       <groupId>org.wildfly.client</groupId>
       <artifactId>wildfly-client-config</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.wildfly.common</groupId>
       <artifactId>wildfly-common</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.jboss.xnio</groupId>
       <artifactId>xnio-nio</artifactId>
     </dependency>
-    <!-- end 2.2.0.Final managed -->
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+    </dependency>
 
     <!-- Meta SPI -->
     <dependency>
